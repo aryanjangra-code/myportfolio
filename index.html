@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan | Portfolio</title>
+    <style>
+        /* CSS reset and variables */
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --accent-color: #3b82f6;
+            --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        /* Home */
+        #home {
+            align-items: center;
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+        }
+
+        /* About */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #334155;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            border-bottom: 1px solid #334155;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.8rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .project-info p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .project-links a {
+            color: white;
+            background: #334155;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .project-links a:hover {
+            background: var(--accent-color);
+        }
+
+        /* Contact */
+        .contact-container {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-container p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            color: #64748b;
+            border-top: 1px solid #334155;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Can add a hamburger menu later if needed */
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            .social-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Aryan</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1>Hi, I'm Aryan.</h1>
+        <p>Computer Science Engineering Student & Full-Stack Developer</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a 3rd-year CSE student at HNBGU currently based in Srinagar, originally from Sirsa, Haryana. I have a strong foundation in frontend web development and have transitioned heavily into backend architecture.</p> 
+                <p>My current focus is on building scalable, real-time applications and mastering core computer science concepts like Data Structures, Algorithms, and System Design.</p>
+                
+                <div class="skills">
+                    <span class="skill-tag">JavaScript / C++</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Socket.io</span>
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">Data Structures & Algorithms</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="chatapp.png" alt="Chat web app">
+                </div>
+                <div class="project-info">
+                    <h3>Real-Time Group Chat</h3>
+                    <p>A full-stack real-time messaging application allowing users to join rooms and communicate instantly. Built with a focus on seamless backend integration and real-time event handling.</p>
+                    <span class="project-tech">Node.js • Express • MongoDB • Socket.io</span>
+                    <div class="project-links">
+                        <a href="https://group-chat-app-production-0ca0.up.railway.app/" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="calcultor.png" alt="Calculator">
+                </div>
+                <div class="project-info">
+                    <h3>Interactive Calculator</h3>
+                    <p>A sleek, fully responsive web calculator featuring accurate mathematical logic and an intuitive user interface.</p>
+                    <span class="project-tech">HTML • CSS • Vanilla JavaScript</span>
+                    <div class="project-links">
+                        <a href="https://simplewebcalculatorcc.netlify.app/" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="simplegallery.png" alt="A simple gallery">
+                </div>
+                <div class="project-info">
+                    <h3>Dynamic Image Gallery</h3>
+                    <p>A responsive and modern image gallery application providing a clean UI to view collections smoothly across all devices.</p>
+                    <span class="project-tech">HTML • CSS • JavaScript</span>
+                    <div class="project-links">
+                        <a href="https://incomparable-clafoutis-11ffa5.netlify.app/" target="_blank">Live Demo →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <p>I'm always open to discussing new development projects, tech collaborations, or opportunities in software engineering.</p>
+            <div class="social-links">
+                <a href="mailto:aryanjangra582006@gmail.com" target="_blank">
+                    📧 Email Me
+                </a>
+                <a href="www.linkedin.com/in/aryan-jangra-00870b292" target="_blank">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/aryanjangra-code" target="_blank">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
