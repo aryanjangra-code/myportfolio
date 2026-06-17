@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
             --card-bg: #1e293b;
             --nav-bg: rgba(15, 23, 42, 0.9);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -39,7 +40,6 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         nav .logo {
@@ -81,6 +81,12 @@
             margin-bottom: 2.5rem;
             color: var(--accent-color);
             text-align: center;
+        }
+
+        #home img {
+            height: 200px;
+            width: 200px;
+            border-radius: 145px;
         }
 
         /* Home */
@@ -130,7 +136,7 @@
             color: #cbd5e1;
             margin-bottom: 1.5rem;
         }
-        
+
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -168,7 +174,7 @@
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .project-img {
@@ -276,19 +282,27 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 720px) {
             nav ul {
-                display: none; /* Can add a hamburger menu later if needed */
+                display: none;
+                /* Can add a hamburger menu later if needed */
             }
+
             #home h1 {
                 font-size: 3rem;
             }
+
             .social-links {
                 flex-direction: column;
+            }
+
+            .project-grid {
+                max-width: 500px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -302,6 +316,7 @@
     </nav>
 
     <section id="home">
+        <img src="my_img.jpg" alt="Aryan">
         <h1>Hi, I'm Aryan.</h1>
         <p>Computer Science Engineering Student & Full-Stack Developer</p>
         <a href="#projects" class="btn">View My Work</a>
@@ -311,9 +326,12 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>I'm a 3rd-year CSE student at HNBGU currently based in Srinagar, originally from Sirsa, Haryana. I have a strong foundation in frontend web development and have transitioned heavily into backend architecture.</p> 
-                <p>My current focus is on building scalable, real-time applications and mastering core computer science concepts like Data Structures, Algorithms, and System Design.</p>
-                
+                <p>I'm a 3rd-year CSE student at HNBGU currently based in Srinagar, originally from Sirsa, Haryana. I
+                    have a strong foundation in frontend web development and have transitioned heavily into backend
+                    architecture.</p>
+                <p>My current focus is on building scalable, real-time applications and mastering core computer science
+                    concepts like Data Structures, Algorithms, and System Design.</p>
+
                 <div class="skills">
                     <span class="skill-tag">JavaScript / C++</span>
                     <span class="skill-tag">Node.js</span>
@@ -330,17 +348,18 @@
     <section id="projects">
         <h2>My Projects</h2>
         <div class="project-grid">
-            
+
             <div class="project-card">
                 <div class="project-img">
                     <img src="chatapp.png" alt="Chat web app">
                 </div>
                 <div class="project-info">
                     <h3>Real-Time Group Chat</h3>
-                    <p>A full-stack real-time messaging application allowing users to join rooms and communicate instantly. Built with a focus on seamless backend integration and real-time event handling.</p>
+                    <p>A full-stack real-time messaging application allowing users to join rooms and communicate
+                        instantly. Built with a focus on seamless backend integration and real-time event handling.</p>
                     <span class="project-tech">Node.js • Express • MongoDB • Socket.io</span>
                     <div class="project-links">
-                        <a href="https://group-chat-app-production-0ca0.up.railway.app/" target="_blank">Live Demo →</a>
+                        <a href="https://group-chat-app-production-0ca0.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -351,10 +370,11 @@
                 </div>
                 <div class="project-info">
                     <h3>Interactive Calculator</h3>
-                    <p>A sleek, fully responsive web calculator featuring accurate mathematical logic and an intuitive user interface.</p>
+                    <p>A sleek, fully responsive web calculator featuring accurate mathematical logic and an intuitive
+                        user interface.</p>
                     <span class="project-tech">HTML • CSS • Vanilla JavaScript</span>
                     <div class="project-links">
-                        <a href="https://simplewebcalculatorcc.netlify.app/" target="_blank">Live Demo →</a>
+                        <a href="https://simplewebcalculatorcc.netlify.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -365,10 +385,11 @@
                 </div>
                 <div class="project-info">
                     <h3>Dynamic Image Gallery</h3>
-                    <p>A responsive and modern image gallery application providing a clean UI to view collections smoothly across all devices.</p>
+                    <p>A responsive and modern image gallery application providing a clean UI to view collections
+                        smoothly across all devices.</p>
                     <span class="project-tech">HTML • CSS • JavaScript</span>
                     <div class="project-links">
-                        <a href="https://incomparable-clafoutis-11ffa5.netlify.app/" target="_blank">Live Demo →</a>
+                        <a href="https://incomparable-clafoutis-11ffa5.netlify.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -379,15 +400,17 @@
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="contact-container">
-            <p>I'm always open to discussing new development projects, tech collaborations, or opportunities in software engineering.</p>
+            <p>I'm always open to discussing new development projects, tech collaborations, or opportunities in software
+                engineering.</p>
             <div class="social-links">
                 <a href="mailto:aryanjangra582006@gmail.com" target="_blank">
                     📧 Email Me
                 </a>
-                <a href="Https://www.linkedin.com/in/aryan-jangra-00870b292?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
+                <a href="Https://www.linkedin.com/in/aryan-jangra-00870b292?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                    target="_blank" rel="noopener noreferrer">
                     💼 LinkedIn
                 </a>
-                <a href="https://github.com/aryanjangra-code" target="_blank">
+                <a href="https://github.com/aryanjangra-code" target="_blank" rel="noopener noreferrer">
                     💻 GitHub
                 </a>
             </div>
@@ -396,4 +419,5 @@
 
 
 </body>
+
 </html>
