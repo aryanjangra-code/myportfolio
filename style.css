@@ -1,3 +1,4 @@
+
 /* CSS reset and variables */
 :root {
     --bg-color: #0f172a;
@@ -53,11 +54,38 @@ nav ul li a {
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
+  position: relative;
+  display: inline-block;
 }
 
 nav ul li a:hover {
     color: var(--accent-color);
 }
+
+nav ul li a::after,
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+nav ul li a::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+nav ul li a:hover::after,
+nav ul li a:hover::before {
+  transform: scaleX(1);
+}
+
 
 /* Sections */
 section {
@@ -104,13 +132,59 @@ h2 {
     background: var(--accent-color);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 15px;
     font-weight: 600;
     transition: background 0.3s;
+    position: relative;
+    z-index: 0;
 }
 
-.btn:hover {
-    background: #2563eb;
+
+.btn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.btn:active {
+    color: var(--accent-color);
+}
+
+.btn:active:after {
+    background: transparent;
+}
+
+.btn:hover:before {
+    opacity: 1;
+}
+
+.btn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:  var(--accent-color);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 
 /* About */
@@ -158,15 +232,40 @@ h2 {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid #334155;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(0,255,255,0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }
 
 .project-img {
