@@ -17,6 +17,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li id="theme-toggle"><a href="#none">Toggle Theme</a></li>
         </ul>
     </nav>
 
@@ -31,8 +32,11 @@
         <h2>About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>I'm a 4th-year CSE student at HNBGU currently based in Srinagar, originally from Sirsa, Haryana. I have a strong foundation in frontend web development and have transitioned heavily into backend architecture.</p>
-                <p>My current focus is on building scalable, real-time applications and mastering core computer science concepts like Data Structures, Algorithms, and System Design.</p>
+                <p>I'm a 4th-year CSE student at HNBGU currently based in Srinagar, originally from Sirsa, Haryana. I
+                    have a strong foundation in frontend web development and have transitioned heavily into backend
+                    architecture.</p>
+                <p>My current focus is on building scalable, real-time applications and mastering core computer science
+                    concepts like Data Structures, Algorithms, and System Design.</p>
 
                 <div class="skills">
                     <span class="skill-tag">JavaScript / C++</span>
@@ -59,10 +63,13 @@
                 </div>
                 <div class="project-info">
                     <h3>Real-Time Group Chat</h3>
-                    <p>A full-stack real-time messaging platform enabling instantaneous, room-based communication. Engineered with secure user authentication, persistent chat history, and low-latency event handling via WebSockets.</p>
+                    <p>A full-stack real-time messaging platform enabling instantaneous, room-based communication.
+                        Engineered with secure user authentication, persistent chat history, and low-latency event
+                        handling via WebSockets.</p>
                     <span class="project-tech">Node.js • Express • MongoDB • Socket.io</span>
                     <div class="project-links">
-                        <a href="https://group-chat-app-production-0ca0.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+                        <a href="https://group-chat-app-production-0ca0.up.railway.app/" target="_blank"
+                            rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -73,10 +80,13 @@
                 </div>
                 <div class="project-info">
                     <h3>Full-Stack Music Player</h3>
-                    <p>A custom-built full-stack media player featuring a dynamic "Cloud Library" tracklist, live playback progress tracking, and a responsive dark/light theme toggler. Engineered with bespoke vanilla JavaScript audio controls for a seamless streaming experience.</p>
+                    <p>A custom-built full-stack media player featuring a dynamic "Cloud Library" tracklist, live
+                        playback progress tracking, and a responsive dark/light theme toggler. Engineered with bespoke
+                        vanilla JavaScript audio controls for a seamless streaming experience.</p>
                     <span class="project-tech">Vanilla JS • Node.js • Express • MongoDB • Cloudinary</span>
                     <div class="project-links">
-                        <a href="https://musicplayer-production-2de5.up.railway.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+                        <a href="https://musicplayer-production-2de5.up.railway.app/" target="_blank"
+                            rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -91,7 +101,8 @@
                         smoothly across all devices.</p>
                     <span class="project-tech">HTML • CSS • JavaScript</span>
                     <div class="project-links">
-                        <a href="https://incomparable-clafoutis-11ffa5.netlify.app/" target="_blank" rel="noopener noreferrer">Live Demo →</a>
+                        <a href="https://incomparable-clafoutis-11ffa5.netlify.app/" target="_blank"
+                            rel="noopener noreferrer">Live Demo →</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +130,62 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+        });
+        anime({
+            targets: '.logo',
+            translateY: [-50, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            easing: 'easeOutExpo'
+        });
+
+        const sections = document.querySelectorAll('section');
+        const skill = document.querySelectorAll('.skill-tag');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateY: [50, 0],
+                        duration: 1000,
+                        easing: 'easeOutExpo'
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        const observer2 = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    anime({
+                        targets: '.skill-tag',
+                        translateY: [20, 0],
+                        opacity: [0, 1],
+                        delay: anime.stagger(100), // This delays each tag by 100ms
+                        easing: 'easeOutBack',
+                        duration: 800
+                    });
+                    observer2.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+        skill.forEach(skill => {
+            skill.style.opacity = '0';
+            observer2.observe(skill);
+        });
+    </script>
 </body>
 
 </html>
